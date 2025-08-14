@@ -7,30 +7,26 @@
     --font-weight-light: 300;
 
     /* Colors */
-    --md-primary: #0061a4;
-    --md-on-primary: #ffffff;
-    --md-primary-container: #d1e4ff;
-    --md-on-primary-container: #001d36;
-
-    --md-error: #ba1a1a;
+    --md-primary: #004080; /* 深い青、マットなプライマリー */
+    --md-on-primary: #ffffff; /* 白色テキスト */
+    --md-primary-container: #1a73e8; /* 濃い青の背景 */
+    --md-on-primary-container: #ffffff; /* 白色テキスト */
+    --md-error: #d32f2f; /* 鮮やかな赤 */
     --md-on-error: #ffffff;
-    --md-error-container: #ffdad6;
-    --md-on-error-container: #410002;
-
-    --md-success: #006e1c;
+    --md-error-container: #b71c1c; /* 濃い赤の背景 */
+    --md-on-error-container: #ffffff;
+    --md-success: #2e7d32; /* 鮮やかな緑 */
     --md-on-success: #ffffff;
-    --md-success-container: #9df996;
-    --md-on-success-container: #002106;
-
-    --md-warning: #7d5800;
+    --md-success-container: #1b5e20; /* 濃い緑の背景 */
+    --md-on-success-container: #ffffff;
+    --md-warning: #f57c00; /* 鮮やかなオレンジ */
     --md-on-warning: #ffffff;
-    --md-warning-container: #ffdf93;
-    --md-on-warning-container: #271900;
-
-    --md-info: #0062a1;
+    --md-warning-container: #e65100; /* 濃いオレンジの背景 */
+    --md-on-warning-container: #ffffff;
+    --md-info: #0277bd; /* 鮮やかな青 */
     --md-on-info: #ffffff;
-    --md-info-container: #d0e4ff;
-    --md-on-info-container: #001d35;
+    --md-info-container: #01579b; /* 濃い青の背景 */
+    --md-on-info-container: #ffffff;
 
     /* Surface colors */
     --md-surface: #fcfcff;
@@ -53,6 +49,14 @@
 
 html::-webkit-scrollbar {
     display: none;
+}
+
+/* 通知コンテナの位置設定 */
+.notify-container {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    width: 300px;
 }
 
 @media (width: 3840px) and (height: 2160px) {
@@ -105,25 +109,35 @@ html::-webkit-scrollbar {
     }
 }
 
+/* 通常解像度用の透過スタイル */
 .success {
-    background-color: var(--md-success-container);
+    background-color: var(--md-success-container); /* 半透明の緑 */
     color: var(--md-on-success-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-success); /* 緑のボーダー */
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out; /* アニメ風スライドイン */
 }
 
 .primary {
-    background-color: var(--md-primary-container);
+    background-color: var(--md-primary-container); /* 半透明の青 */
     color: var(--md-on-primary-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-primary);
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out;
 }
 
 .warning {
-    background-color: var(--md-warning-container);
+    background-color: var(--md-warning-container); /* 半透明のオレンジ */
     color: var(--md-on-warning-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-warning);
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out;
 }
 
 .error {
@@ -133,16 +147,38 @@ html::-webkit-scrollbar {
     font-weight: var(--font-weight-medium);
 }
 
-.police {
-    background-color: var(--md-info-container);
-    color: var(--md-on-info-container);
-    padding: 12px 16px;
-    font-weight: var(--font-weight-medium);
-}
-
-.ambulance {
-    background-color: var(--md-error-container);
+.error {
+    background-color: var(--md-error-container); /* 半透明の赤 */
     color: var(--md-on-error-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-error);
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.police {
+    background-color: var(--md-info-container); /* 半透明の青 */
+    color: var(--md-on-info-container);
+    padding: 12px 16px;
+    font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-info);
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.ambulance {
+    background-color: var(--md-error-container); /* 半透明の赤 */
+    color: var(--md-on-error-container);
+    padding: 12px 16px;
+    font-weight: var(--font-weight-medium);
+    border-left: 0.5rem solid var(--md-error);
+    border-radius: var(--md-radius-medium);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+/* アニメ風スライドインアニメーション */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
 }
