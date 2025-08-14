@@ -5,23 +5,22 @@
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --font-weight-light: 300;
+
     /* Colors */
-    --md-primary: #1c75d2;
-    --md-primary-container: #6facec;
-    --md-error: #c10114;
-    --md-error-container: #fe4255;
-    --md-success: #20bb44;
-    --md-success-container: #6ae587;
-    --md-warning: #ff9800;
-    --md-warning-container: #ffc107;
-    --md-info: #2197f2;
-    --md-info-container: #7ac1f7;
+    --md-primary: #1c75d2; /* 深い青、ボーダー用 */
+    --md-error: #c10114; /* 鮮やかな赤、ボーダー用 */
+    --md-success: #20bb44; /* 鮮やかな緑、ボーダー用 */
+    --md-warning: #ff9800; /* 鮮やかなオレンジ、ボーダー用 */
+    --md-info: #2197f2; /* 鮮やかな青、ボーダー用 */
     --md-surface: #fffbff;
     --md-on-surface: #1c1b1f;
 
     /* Custom Variables */
-    --primary-bg: rgba(23, 23, 23, 90%);
-    --active-bg: var(--md-error);
+    --primary-bg: rgba(0, 0, 0, 0.7); /* さらに黒い半透明背景 */
+    --active-bg: rgba(0, 0, 0, 0.7); /* エラー用、黒に赤をほんの少し */
+    --success-bg: rgba(0, 0, 0, 0.7); /* サクセス用、黒に緑をほんの少し */
+    --warning-bg: rgba(0, 0, 0, 0.7); /* 警告用、黒にオレンジをほんの少し */
+    --info-bg: rgba(0, 0, 0, 0.7); /* 情報用、黒に青をほんの少し */
     --font-color: white;
 
     /* Elevation */
@@ -46,12 +45,33 @@
 
 .text {
     position: absolute;
-    background: var(--primary-bg);
+    background: var(--primary-bg); /* デフォルトの黒い半透明背景 */
     color: var(--font-color);
     margin-top: 0.5rem;
-    padding: 0.45rem;
-    border-radius: var(--md-radius-extra-small);
+    padding: 0.45rem 1rem;
+    border-radius: var(--md-radius-medium);
     box-shadow: var(--md-elevation-1);
+    animation: slideIn 0.5s ease-in-out; /* アニメ風スライドイン */
+}
+
+.text.success {
+    background: var(--success-bg); /* 黒に緑の半透明 */
+    border-left: 0.5rem solid var(--md-success); /* 緑のボーダー */
+}
+
+.text.error {
+    background: var(--active-bg); /* 黒に赤の半透明 */
+    border-left: 0.5rem solid var(--md-error); /* 赤のボーダー */
+}
+
+.text.warning {
+    background: var(--warning-bg); /* 黒にオレンジの半透明 */
+    border-left: 0.5rem solid var(--md-warning); /* オレンジのボーダー */
+}
+
+.text.info {
+    background: var(--info-bg); /* 黒に青の半透明 */
+    border-left: 0.5rem solid var(--md-info); /* 青のボーダー */
 }
 
 @media (width: 3840px) and (height: 2160px) {
@@ -66,10 +86,41 @@
         font-weight: var(--font-weight-light);
         font-size: 1.5vh;
     }
+
+    .text {
+        background: var(--primary-bg); /* 黒い半透明 */
+        color: var(--font-color);
+        margin-top: 0.5rem;
+        padding: 0.45rem 1rem;
+        border-radius: var(--md-radius-medium);
+        box-shadow: var(--md-elevation-1);
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+    .text.success {
+        background: var(--success-bg);
+        border-left: 0.5rem solid var(--md-success);
+    }
+
+    .text.error {
+        background: var(--active-bg);
+        border-left: 0.5rem solid var(--md-error);
+    }
+
+    .text.warning {
+        background: var(--warning-bg);
+        border-left: 0.5rem solid var(--md-warning);
+    }
+
+    .text.info {
+        background: var(--info-bg);
+        border-left: 0.5rem solid var(--md-info);
+    }
 }
 
 .text.pressed {
-    background: var(--active-bg);
+    background: var(--active-bg); /* 黒に赤の半透明 */
+    border-left: 0.5rem solid var(--md-error);
 }
 
 .top {
@@ -121,4 +172,17 @@
     transition: 0.5s;
     left: -100px;
     opacity: 0;
+}
+
+/* アニメ風スライドインアニメーション */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes sparkle {
+    0%, 100% { box-shadow: var(--md-elevation-1); }
+    50% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+}
+.text {
+    animation: slideIn 0.5s ease-in-out, sparkle 1s infinite;
 }
