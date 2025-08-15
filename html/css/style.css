@@ -6,26 +6,49 @@
     --font-weight-bold: 700;
     --font-weight-light: 300;
 
-    /* Colors */
-    --md-primary: #004080; /* 深い青、マットなプライマリー */
-    --md-on-primary: #ffffff; /* 白色テキスト */
-    --md-primary-container: #1a73e8; /* 濃い青の背景 */
-    --md-on-primary-container: #ffffff; /* 白色テキスト */
-    --md-error: #d32f2f; /* 鮮やかな赤 */
+    /* Colors - 元の色をコメントアウト */
+    /*
+    --md-primary: #004080;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #1a73e8;
+    --md-on-primary-container: #ffffff;
+    --md-error: #d32f2f;
     --md-on-error: #ffffff;
-    --md-error-container: #b71c1c; /* 濃い赤の背景 */
+    --md-error-container: #b71c1c;
     --md-on-error-container: #ffffff;
-    --md-success: #2e7d32; /* 鮮やかな緑 */
+    --md-success: #2e7d32;
     --md-on-success: #ffffff;
-    --md-success-container: #1b5e20; /* 濃い緑の背景 */
+    --md-success-container: #1b5e20;
     --md-on-success-container: #ffffff;
-    --md-warning: #f57c00; /* 鮮やかなオレンジ */
+    --md-warning: #f57c00;
     --md-on-warning: #ffffff;
-    --md-warning-container: #e65100; /* 濃いオレンジの背景 */
+    --md-warning-container: #e65100;
     --md-on-warning-container: #ffffff;
-    --md-info: #0277bd; /* 鮮やかな青 */
+    --md-info: #0277bd;
     --md-on-info: #ffffff;
-    --md-info-container: #01579b; /* 濃い青の背景 */
+    --md-info-container: #01579b;
+    --md-on-info-container: #ffffff;
+    */
+    /* 新しい黒い透過な色設定 */
+    --md-primary: #004080; /* 深い青、ボーダー用 */
+    --md-on-primary: #ffffff;
+    --md-primary-container: rgba(0, 0, 10, 0.85); /* 黒に青を少し */
+    --md-on-primary-container: #ffffff;
+    --md-error: #d32f2f; /* 鮮やかな赤、ボーダー用 */
+    --md-on-error: #ffffff;
+    --md-error-container: rgba(10, 0, 0, 0.85); /* 黒に赤を少し */
+    --md-on-error-container: #ffffff;
+    --md-success: #2e7d32; /* 鮮やかな緑、ボーダー用 */
+    --md-on-success: #ffffff;
+    --md-success-container: rgba(0, 10, 0, 0.85); /* 黒に緑を少し */
+    --md-on-success-container: #ffffff;
+    --md-warning: #f57c00; /* 鮮やかなオレンジ、ボーダー用 */
+    --md-on-warning: #ffffff;
+    --md-warning-container: rgba(10, 5, 0, 0.85); /* 黒にオレンジを少し */
+    --md-on-warning-container: #ffffff;
+    --md-info: #0277bd; /* 鮮やかな青、ボーダー用 */
+    --md-on-info: #ffffff;
+    --md-info-container: rgba(0, 0, 10, 0.85); /* 黒に青を少し */
     --md-on-info-container: #ffffff;
 
     /* Surface colors */
@@ -59,69 +82,38 @@ html::-webkit-scrollbar {
     width: 300px;
 }
 
+/* 4K解像度用の黒い透過スタイル */
 @media (width: 3840px) and (height: 2160px) {
-    .success {
-        background-color: rgba(23, 23, 23, 90%);
+    .success, .primary, .error, .warning, .police, .ambulance {
+        background-color: rgba(0, 0, 0, 0.75); /* 黒い半透明背景 */
         color: var(--md-on-surface);
         box-shadow: var(--md-elevation-1);
-        border-left: 0.5rem solid var(--md-success);
+        border-left: 0.5rem solid var(--md-success); /* タイプごとのボーダー */
         font-size: 1.5vh;
+        padding: 12px 16px;
+        border-radius: var(--md-radius-medium);
+        animation: slideIn 0.5s ease-in-out; /* アニメ風スライドイン */
     }
-
-    .primary {
-        background-color: rgba(23, 23, 23, 90%);
-        color: var(--md-on-surface);
-        box-shadow: var(--md-elevation-1);
-        border-left: 5px solid var(--md-primary);
-        font-size: 1.5vh;
-    }
-
-    .error {
-        background-color: rgba(23, 23, 23, 90%);
-        color: var(--md-on-surface);
-        box-shadow: var(--md-elevation-1);
-        border-left: 5px solid var(--md-error);
-        font-size: 1.5vh;
-    }
-
-    .warning {
-        background-color: rgba(23, 23, 23, 90%);
-        color: var(--md-on-surface);
-        box-shadow: var(--md-elevation-1);
-        border-left: 5px solid var(--md-warning);
-        font-size: 1.5vh;
-    }
-
-    .police {
-        background-color: rgba(23, 23, 23, 90%);
-        color: var(--md-on-surface);
-        box-shadow: var(--md-elevation-1);
-        border-left: 5px solid var(--md-info);
-        font-size: 1.5vh;
-    }
-
-    .ambulance {
-        background-color: rgba(23, 23, 23, 90%);
-        color: var(--md-on-surface);
-        box-shadow: var(--md-elevation-1);
-        border-left: 5px solid var(--md-error);
-        font-size: 1.5vh;
-    }
+    .primary { border-left: 0.5rem solid var(--md-primary); }
+    .error { border-left: 0.5rem solid var(--md-error); }
+    .warning { border-left: 0.5rem solid var(--md-warning); }
+    .police { border-left: 0.5rem solid var(--md-info); }
+    .ambulance { border-left: 0.5rem solid var(--md-error); }
 }
 
-/* 通常解像度用の透過スタイル */
+/* 通常解像度用の黒い透過スタイル */
 .success {
-    background-color: var(--md-success-container); /* 半透明の緑 */
+    background-color: var(--md-success-container); /* 黒に緑の半透明 */
     color: var(--md-on-success-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
     border-left: 0.5rem solid var(--md-success); /* 緑のボーダー */
     border-radius: var(--md-radius-medium);
-    animation: slideIn 0.5s ease-in-out; /* アニメ風スライドイン */
+    animation: slideIn 0.5s ease-in-out;
 }
 
 .primary {
-    background-color: var(--md-primary-container); /* 半透明の青 */
+    background-color: var(--md-primary-container); /* 黒に青の半透明 */
     color: var(--md-on-primary-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
@@ -131,7 +123,7 @@ html::-webkit-scrollbar {
 }
 
 .warning {
-    background-color: var(--md-warning-container); /* 半透明のオレンジ */
+    background-color: var(--md-warning-container); /* 黒にオレンジの半透明 */
     color: var(--md-on-warning-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
@@ -141,14 +133,7 @@ html::-webkit-scrollbar {
 }
 
 .error {
-    background-color: var(--md-error-container);
-    color: var(--md-on-error-container);
-    padding: 12px 16px;
-    font-weight: var(--font-weight-medium);
-}
-
-.error {
-    background-color: var(--md-error-container); /* 半透明の赤 */
+    background-color: var(--md-error-container); /* 黒に赤の半透明 */
     color: var(--md-on-error-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
@@ -158,7 +143,7 @@ html::-webkit-scrollbar {
 }
 
 .police {
-    background-color: var(--md-info-container); /* 半透明の青 */
+    background-color: var(--md-info-container); /* 黒に青の半透明 */
     color: var(--md-on-info-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);
@@ -168,7 +153,7 @@ html::-webkit-scrollbar {
 }
 
 .ambulance {
-    background-color: var(--md-error-container); /* 半透明の赤 */
+    background-color: var(--md-error-container); /* 黒に赤の半透明 */
     color: var(--md-on-error-container);
     padding: 12px 16px;
     font-weight: var(--font-weight-medium);

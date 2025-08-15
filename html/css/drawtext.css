@@ -15,12 +15,24 @@
     --md-surface: #fffbff;
     --md-on-surface: #1c1b1f;
 
-    /* Custom Variables */
-    --primary-bg: rgba(0, 0, 0, 0.7); /* さらに黒い半透明背景 */
-    --active-bg: rgba(0, 0, 0, 0.7); /* エラー用、黒に赤をほんの少し */
-    --success-bg: rgba(0, 0, 0, 0.7); /* サクセス用、黒に緑をほんの少し */
-    --warning-bg: rgba(0, 0, 0, 0.7); /* 警告用、黒にオレンジをほんの少し */
-    --info-bg: rgba(0, 0, 0, 0.7); /* 情報用、黒に青をほんの少し */
+    /* Custom Variables - 元の背景色をコメントアウト */
+    /*
+    --primary-bg: rgba(23, 23, 23, 90%);
+    --active-bg: var(--md-error);
+    --success-bg: rgba(32, 187, 68, 0.8);
+    --warning-bg: rgba(255, 152, 0, 0.8);
+    --info-bg: rgba(33, 151, 242, 0.8);
+    --primary-bg: rgba(0, 0, 0, 0.7);
+    --active-bg: rgba(20, 0, 0, 0.8);
+    --success-bg: rgba(0, 20, 0, 0.8);
+    --warning-bg: rgba(20, 10, 0, 0.8);
+    --info-bg: rgba(0, 0, 20, 0.8);
+    */
+    --primary-bg: rgba(0, 0, 0, 0.85); /* 黒い半透明背景 */
+    --active-bg: rgba(10, 0, 0, 0.85); /* エラー用、黒に赤をほんの少し */
+    --success-bg: rgba(0, 10, 0, 0.85); /* サクセス用、黒に緑をほんの少し */
+    --warning-bg: rgba(10, 5, 0, 0.85); /* 警告用、黒にオレンジをほんの少し */
+    --info-bg: rgba(0, 0, 10, 0.85); /* 情報用、黒に青をほんの少し */
     --font-color: white;
 
     /* Elevation */
@@ -178,11 +190,4 @@
 @keyframes slideIn {
     from { opacity: 0; transform: translateX(100%); }
     to { opacity: 1; transform: translateX(0); }
-}
-@keyframes sparkle {
-    0%, 100% { box-shadow: var(--md-elevation-1); }
-    50% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-}
-.text {
-    animation: slideIn 0.5s ease-in-out, sparkle 1s infinite;
 }
